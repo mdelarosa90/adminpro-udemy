@@ -8,6 +8,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { AuthenticationGuard } from '../services/service.index';
+import { ProfileComponent } from './profile/profile.component';
 
 const pagesRoutes: Routes = [
     {
@@ -16,22 +17,25 @@ const pagesRoutes: Routes = [
         canActivate: [AuthenticationGuard],
         children: [
             {
-                path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard'}
+                path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' }
             },
             {
-                path: 'progress', component: ProgressComponent, data: { titulo: 'Progress'}
+                path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' }
             },
             {
-                path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas'}
+                path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' }
             },
             {
-                path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas'}
+                path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }
             },
             {
-                path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs'}
+                path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }
             },
             {
-                path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema'}
+                path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' }
+            },
+            {
+                path: 'profile', component: ProfileComponent, data: { titulo: 'Perfil de Usuario' }
             },
             {
                 path: '', redirectTo: '/dashboard', pathMatch: 'full'
