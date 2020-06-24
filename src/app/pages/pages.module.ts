@@ -19,6 +19,7 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios/usuarios.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UsuariosComponent } from './usuarios/usuarios/usuarios.component';
     PromesasComponent,
     RxjsComponent,
     ProfileComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    ModalUploadComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { UsuariosComponent } from './usuarios/usuarios/usuarios.component';
     DashboardComponent,
     Graficas1Component,
     PagesComponent,
-    ProgressComponent
+    ProgressComponent,
+    ModalUploadComponent
   ]
 })
 export class PagesModule { }
