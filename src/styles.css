@@ -9,6 +9,13 @@
 }
 
 .w150 {
-    width: '150px' !important;
-    height: '150px' !important;
+    width: 150px;
+}
+
+.w70 {
+    width: 70px;
+}
+
+.w50 {
+    width: 50px;
 }
