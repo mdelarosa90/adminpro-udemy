@@ -1,0 +1,58 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input (keyup)="buscarMedico(input.value)" type="text" class="form-control"
+                    placeholder="Buscar médico..." />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    <button class="btn btn-primary waves-effect waves-light btn-rounded" type="button"
+                        [routerLink]="['/medico', 'new']">
+                        <i class="fa fa-plus"></i>
+                        Crear Médico
+                    </button>
+                </div>
+                <h3 class="card-title">Médicos Registrados (<small>{{medicoService.totalMedicos}}</small>)</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Médico</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let medico of medicos">
+                            <td class="w70">
+                                <img (click)="mostrarMedico(medico)" [src]="medico.img | imagen: 'medico'"
+                                    class="w50 img-circle pointer">
+                            </td>
+                            <td class="align-middle">
+                                {{medico.nombre}}
+                            </td>
+                            <td class="align-middle">
+                                {{medico.hospital.nombre}}
+                            </td>
+                            <td class="align-middle">
+                                <button class="btn btn-primary" [routerLink]="['/medico', medico._id ]">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button class="btn btn-danger" (click)="borrarMedico(medico)">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
