@@ -1,4 +1,5 @@
 
+export { AdminGuard } from './guards/admin.guard';
 export { AuthenticationGuard } from './guards/authentication.guard';
 export { SettingsService } from './settings/settings.service';
 export { SharedService } from './shared/shared.service';
