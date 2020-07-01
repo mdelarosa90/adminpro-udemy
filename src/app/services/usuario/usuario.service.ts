@@ -19,6 +19,23 @@ export class UsuarioService {
 
   constructor(private http: HttpClient, private router: Router, private subirArchivoService: SubirArchivoService) { this.cargarStorage() }
 
+
+  renuevaToken() {
+    const url = API_URL + '/login/renuevatoken?token=' + this.token;
+    return this.http.get(url)
+      .pipe(map((resp: any) => {
+        this.token = resp.token;
+        localStorage.setItem('token', this.token);
+        console.log('TOKEN RENOVADO');
+        return true;
+      }))
+      .pipe(catchError(err => {
+        this.logOut();
+        swal('No se pudo renovar Token', 'No fue posible renovar token', 'error');
+        return of(err);
+      }));
+  }
+
   isAuthenticated() {
     return this.token.length > 5 ? true : false;
   }

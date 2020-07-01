@@ -7,7 +7,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { AuthenticationGuard, AdminGuard } from '../services/service.index';
+import { AuthenticationGuard, AdminGuard, VerificaTokenGuard } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios/usuarios.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
@@ -16,52 +16,46 @@ import { MedicoComponent } from './medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 
 const pagesRoutes: Routes = [
+
     {
-        path: '',
-        component: PagesComponent,
-        canActivate: [AuthenticationGuard],
-        children: [
-            {
-                path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' }
-            },
-            {
-                path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' }
-            },
-            {
-                path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' }
-            },
-            {
-                path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }
-            },
-            {
-                path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }
-            },
-            {
-                path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' }
-            },
-            {
-                path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' }
-            },
-            // Mantenimientos
-            {
-                path: 'profile', component: ProfileComponent, data: { titulo: 'Perfil de Usuario' }
-            },
-            {
-                canActivate: [AdminGuard], path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de Usuarios' }
-            },
-            {
-                path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de Hospitales' }
-            },
-            {
-                path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimiento de Medicos' }
-            },
-            {
-                path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Actualizar de Medico' }
-            },
-            {
-                path: '', redirectTo: '/dashboard', pathMatch: 'full'
-            },
-        ]
+        path: 'dashboard', canActivate: [VerificaTokenGuard], component: DashboardComponent, data: { titulo: 'Dashboard' }
+    },
+    {
+        path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' }
+    },
+    {
+        path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' }
+    },
+    {
+        path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }
+    },
+    {
+        path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }
+    },
+    {
+        path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' }
+    },
+    {
+        path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' }
+    },
+    // Mantenimientos
+    {
+        path: 'profile', component: ProfileComponent, data: { titulo: 'Perfil de Usuario' }
+    },
+    {
+        canActivate: [AdminGuard], path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de Usuarios' }
+    },
+    {
+        path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de Hospitales' }
+    },
+    {
+        path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimiento de Medicos' }
+    },
+    {
+        path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Actualizar de Medico' }
+    },
+    {
+        path: '', redirectTo: '/dashboard', pathMatch: 'full'
     },
 ];
 
